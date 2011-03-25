@@ -7,7 +7,7 @@ db = {
 	"host"		: "hades",
 	"dbname"	: "cctv",
 	"user"		: "osm",
-	"password"	: "Gehijm"
+	"password"	: "osm"
 	}
 
 urls = (
