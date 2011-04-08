@@ -7,7 +7,12 @@ installation
 ------------
 You will need a local database with all CCTV cameras from OSM in the osmosis DB schema. There's a step-by-step on how to accomplish that  [here](https://docs.google.com/document/pub?id=1paaYsOakgJEYP380R70s4SGYq8ME3ASl-mweVi1DlQ4).
 
-You will also need a web server with WSGI, instructions for Apache are [here](http://webpy.org/cookbook/mod_wsgi-apache). These instructions are for Apache 1.x it looks like. Adapt for 2.x if you use that. You can also adapt the script to work with another python interface. The web.py documentation will tell you how.
+You will also need a few python modules:
+* Shapely
+* web.py
+* psycopg2
+
+Finally, you will need a web server with WSGI support. Instructions for Apache are [here](http://webpy.org/cookbook/mod_wsgi-apache). I use Ubuntu so I did it like [this](http://ubuntuforums.org/showthread.php?t=833766). You can also adapt the script to work with another python interface. The web.py documentation will tell you how.
 
 Add something like this to your Apache config:
     WSGIScriptAlias /cctv /home/mvexel/www/cctv/cctv.py/
