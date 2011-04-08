@@ -24,8 +24,9 @@ class getcctvs:
 	def GET(self):
 		global DEBUG,db
 		qs=web.ctx.query.lstrip('?').lower().split('=')
-		print len(qs)
-		print qs
+		if DEBUG:
+			print len(qs)
+			print qs
 		if not 'bbox' in qs:
 			return "usage: cctv?bbox=minlon,minlat,maxlon,maxlat"
 		else:
