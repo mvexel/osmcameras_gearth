@@ -2,10 +2,10 @@ import psycopg2
 import web
 from shapely.wkt import loads
  
-DEBUG=True
+DEBUG=False
 db = {
 	"host"		: "hades",
-	"dbname"	: "cctv",
+	"dbname"	: "osm_cctv",
 	"user"		: "osm",
 	"password"	: "osm"
 	}
@@ -18,6 +18,7 @@ if DEBUG:
 	app = web.application(urls, globals())
 else:
 	app = web.application(urls, globals()).wsgifunc()	
+	application = app.wsgifunc()
 
 class getcctvs:
 	def GET(self):
@@ -44,18 +45,6 @@ class getcctvs:
 			minlat=float(minlat)
 			maxlon=float(maxlon)
 			maxlat=float(maxlat)
-# 			sql = """SELECT ST_AsText(way), (planet_osm_point.name) , planet_osm_nodes.tags FROM planet_osm_point
-# 			INNER JOIN planet_osm_nodes
-# 			ON planet_osm_point.osm_id = planet_osm_nodes.id
-# 			WHERE 
-# 				man_made = 'surveillance' AND
-# 				ST_Within(
-# 					way,
-# 					transform(
-# 						transform(ST_GeomFromText('POLYGON((%.6f %.6f,%.6f %.6f,%.6f %.6f,%.6f %.6f,%.6f %.6f))',4326)
-# 						,28992)
-# 					, 4326)
-# 				);""" % (minlon,minlat,maxlon,minlat,maxlon,maxlat,minlon,maxlat,minlon,minlat)
 			sql = """select ST_AsText(n.geom),n.tags,n.tstamp,u.name from nodes as n INNER JOIN users as u ON n.user_id = u.id where tags->'man_made'='surveillance' AND ST_Within(geom, ST_GeomFromText('POLYGON((%.6f %.6f,%.6f %.6f,%.6f %.6f,%.6f %.6f,%.6f %.6f))',4326));""" % (minlon,minlat,maxlon,minlat,maxlon,maxlat,minlon,maxlat,minlon,minlat)
 			if DEBUG:
 				print sql
