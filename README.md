@@ -8,6 +8,7 @@ installation
 You will need a local database with all CCTV cameras from OSM in the osmosis DB schema. There's a step-by-step on how to accomplish that  [here](https://docs.google.com/document/pub?id=1paaYsOakgJEYP380R70s4SGYq8ME3ASl-mweVi1DlQ4).
 
 You will also need a few python modules:
+
 *   Shapely
 *   web.py
 *   psycopg2
