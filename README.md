@@ -8,9 +8,9 @@ installation
 You will need a local database with all CCTV cameras from OSM in the osmosis DB schema. There's a step-by-step on how to accomplish that  [here](https://docs.google.com/document/pub?id=1paaYsOakgJEYP380R70s4SGYq8ME3ASl-mweVi1DlQ4).
 
 You will also need a few python modules:
-* Shapely
-* web.py
-* psycopg2
+*   Shapely
+*   web.py
+*   psycopg2
 
 Finally, you will need a web server with WSGI support. Instructions for Apache are [here](http://webpy.org/cookbook/mod_wsgi-apache). I use Ubuntu so I did it like [this](http://ubuntuforums.org/showthread.php?t=833766). You can also adapt the script to work with another python interface. The web.py documentation will tell you how.
 
