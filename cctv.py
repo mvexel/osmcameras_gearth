@@ -17,7 +17,7 @@ urls = (
 if DEBUG:
 	app = web.application(urls, globals())
 else:
-	app = web.application(urls, globals()).wsgifunc()	
+	app = web.application(urls, globals(), autoreload=False)
 	application = app.wsgifunc()
 
 class getcctvs:
